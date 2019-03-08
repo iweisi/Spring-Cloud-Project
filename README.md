@@ -1,4 +1,3 @@
-[TOC]
 ## Srping Cloud
 
 ### 一、Eureka 注册中心 (重点使用)
@@ -299,7 +298,6 @@ public class CloudConfig {
 
 #### 3.2 Eureka 服务
 - 服务端若是集群，默认是轮询调用
-![b876a7f8498da6f3e7009451c21f7c85.png](en-resource://database/629:1)
 
 #### 3.3 调用 配置 
 ```java
@@ -334,7 +332,6 @@ public class TestController {
 ```
 
 #### 4.3 Provider 服务提供者
-![f9d3916b74cd314592d65d6f08fa29b4.png](en-resource://database/633:1)
 
 ##### 4.3.1 Provider 启动类
 ```java
