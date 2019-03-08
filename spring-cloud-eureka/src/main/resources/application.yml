@@ -1,0 +1,28 @@
+eureka:
+  client:
+    service-url:
+      # 注册中心地址
+      defaultZone: http://localhost:8761/eureka/
+
+      # Eureka高可用，如果有多个Eureka，将采用互相注册法，若是2个以上Eureka 使用','分割
+      # 两个 Eureka 互相注册
+      # 8761 注册到 8762
+      # Eureka 8761 ：defaultZone: http://localhost:8762/eureka/
+      # 8762 注册到 8761
+      # Eureka 8762 ：defaultZone: http://localhost:8761/eureka/
+      # 多个Eureka 以','分割  8761 8762 8763 以8762为例，以此类推
+      # defaultZone: http://localhost:8761/eureka/，http://localhost:8763/eureka/
+
+    # 禁止eureka向自己注册
+    register-with-eureka: false
+    fetchRegistry: false
+  # 关闭eureka心跳警告(不建议):
+  server:
+    enable-self-preservation: false
+# eureka 应用名称
+spring:
+  application:
+    name: eureka
+#tomcat端口
+server:
+  port: 8761
