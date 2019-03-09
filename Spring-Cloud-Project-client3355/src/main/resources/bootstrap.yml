@@ -1,11 +1,11 @@
 spring:
   cloud:
     config:
-      # ÃüÃûÒª¶ÔÓ¦github .ymlÇ°×ºÒ»Ö±
+      # è¯¥åç§°è¦å’ŒGithub .yml å‰ç¼€åç§°ä¸€è‡´
       name: spring-cloud-client
-      # ±¾´Î·ÃÎÊµÄÅäÖÃÏî
+      # æœ¬æ¬¡è®¿é—®çš„é…ç½®é¡¹
       profile: dev
       label: master
-      # ±¾Î¢·şÎñÆô¶¯ºóÏÈÈ¥ÕÒ3344ºÅ·şÎñ£¨config server·şÎñ£©£¬
-      # Í¨¹ıSpringCloudConfig»ñÈ¡GithubµÄ·şÎñµØÖ·
+      # æœ¬ä¸ºæœåŠ¡å¯åŠ¨å…ˆå»æ‰¾3344å·å¾®æœåŠ¡ï¼ˆspring cloud config serverï¼‰ï¼Œ
+      # é€šè¿‡Spring Cloud Config è·å–Githubçš„æœåŠ¡åœ°å€
       uri: htt://localhost:3344

@@ -1,0 +1,4 @@
+spring:
+  application:
+    # 该服务名称要和bootstrap.yml名称保持一致
+    name: spring-cloud-client
