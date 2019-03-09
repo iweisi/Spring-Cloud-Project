@@ -7,13 +7,13 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
     # 注册到Eureka Status自定义名称
   instance:
-    instance-id: spring-cloud-client-server
+    instance-id: spring-cloud-config-server-3344
     # 注册到Eureka Status自定义IP
     prefer-ip-address: true
 # client 应用名称
 spring:
   application:
-    name: spring-cloud-config
+    name: spring-cloud-config-server
     # 远程仓库地址
   cloud:
     config:
@@ -23,4 +23,3 @@ spring:
 #tomcat端口
 server:
   port: 3344
-
