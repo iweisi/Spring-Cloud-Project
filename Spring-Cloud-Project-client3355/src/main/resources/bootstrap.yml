@@ -1,0 +1,11 @@
+spring:
+  cloud:
+    config:
+      # 命名要对应github .yml前缀一直
+      name: spring-cloud-client
+      # 本次访问的配置项
+      profile: dev
+      label: master
+      # 本微服务启动后先去找3344号服务（config server服务），
+      # 通过SpringCloudConfig获取Github的服务地址
+      uri: htt://localhost:3344
