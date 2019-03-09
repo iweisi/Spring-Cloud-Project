@@ -1,11 +1,13 @@
+# 这次不是应用名称，而是github对应的.yml配置文件名的前缀
 spring:
+  application:
+    name: spring-cloud-client
   cloud:
     config:
-      # 该名称要和Github .yml 前缀名称一致
-      name: spring-cloud-client
+      discovery:
+        # 开启cloud配置
+        enabled: true
+        # config 配置中心 服务名称 SPRING-CLOUD-CONFIG-SERVER
+        service-id: SPRING-CLOUD-CONFIG-SERVER
       # 本次访问的配置项
       profile: dev
-      label: master
-      # 本为服务启动先去找3344号微服务（spring cloud config server），
-      # 通过Spring Cloud Config 获取Github的服务地址
-      uri: htt://localhost:3344
