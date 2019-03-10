@@ -657,7 +657,7 @@ feign:
   hystrix:
     enabled: true
 ```
-##### 5.7.3 提供方主启动类
+##### 5.7.3 消费方主启动类
 ```java
 // 引入提供方的接口jar包，Feign 同样要根据包路径进行扫描
 @EnableFeignClients("com.cloud.api.feign")
@@ -966,9 +966,9 @@ env:
 
 ![5](https://github.com/xr2117/Spring-Cloud-Project/blob/master/images/5.png)
 
-#### 7.5 搭建config clinet端
+### 7.5 搭建config clinet端
 
-##### 7.5.1 Pom 配置
+#### 7.5.1 Pom 配置
 ```xml
         <!-- SpringCloud Config 客户端 -->
         <dependency>
@@ -977,7 +977,7 @@ env:
             <version>2.1.1.RELEASE</version>
         </dependency>
 ```
-##### 7.5.2 启动类 配置
+#### 7.5.2 启动类 配置
 ```java
 @EnableDiscoveryClient
 @SpringBootApplication
@@ -990,7 +990,7 @@ public class Client3355Application {
 }
 
 ```
-##### 7.5.3 (bootstrap.yml) 配置
+#### 7.5.3 (bootstrap.yml) 配置
 
 - 使用Spring Cloud 配置中心，配置文件名字为 bootstrap.yml (重点：命名规范)
 
@@ -1009,7 +1009,7 @@ spring:
       # 本次访问的配置项
       profile: dev
 ```
-#### 7.6 运行测试 + 运行流程介绍
+### 7.6 运行测试 + 运行流程介绍
 > clinet端通过yml配置找到对应注册中心的server服务，server服务配置好了github仓库进行拉取配置，clinet读取server拉取下来的配置进行启动
 >
 ```java
