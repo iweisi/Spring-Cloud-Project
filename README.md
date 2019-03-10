@@ -837,14 +837,14 @@ public class ProviderController {
 
 > 运行Hystrix微服务 访问  `http://localhost:8000/hystrix` 会出现以下页面，也就代表服务运行成功（图片示例）
 
-![a865e1e9a5735b7ab169a26bb0061e14.png](en-resource://database/663:0)
+![6](https://github.com/xr2117/Spring-Cloud-Project/blob/master/images/6.png)
 
 ###### 5.3.5.2 使用监控
  - 在路径填写要被监控的服务即可
     `http://localhost:9001/actuator/hystrix.stream `
  - Delay：2000
  - Title：标题
-    ![bb7494ab7d03c4fc968af42512e4cfa4.png](en-resource://database/665:0)
+![9](https://github.com/xr2117/Spring-Cloud-Project/blob/master/images/9.png)
 
 
 ### 六、Zuul 网关
