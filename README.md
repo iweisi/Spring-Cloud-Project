@@ -362,7 +362,7 @@ public class TestController {
 
 > 提供者采用多模块对外暴露提供者要调用的接口以及entity，将被调用的接口打成jar包，提供给消费端（附一张代码结构图）
 
-![1](D:\Spring-cloud-工程\Spring-Cloud-Project\images\1.png)
+![1](https://github.com/xr2117/Spring-Cloud-Project/blob/master/images/1.png)
 
 ##### 4.3.1 Provider 启动类
 
@@ -423,7 +423,7 @@ public class ProviderController {
 
 > 消费者进行调用提供者的接口（附一张结构图）
 
-![2](D:\Spring-cloud-工程\Spring-Cloud-Project\images\2.png)
+![2](https://github.com/xr2117/Spring-Cloud-Project/blob/master/images/2.png)
 
 ##### 4.4.1 Consumer 引入提供方提供的接口依赖
 ```xml
@@ -925,15 +925,15 @@ server:
 
 - 创建仓库
 
-![8](D:\Spring-cloud-工程\Spring-Cloud-Project\images\8.png)
+![8](https://github.com/xr2117/Spring-Cloud-Project/blob/master/images/8.png)
 
 - 2. 拷贝地址
 
-![3](D:\Spring-cloud-工程\Spring-Cloud-Project\images\3.png)
+![3](https://github.com/xr2117/Spring-Cloud-Project/blob/master/images/3.png)
 
 - 3. 复制cloen
 
-![4](D:\Spring-cloud-工程\Spring-Cloud-Project\images\4.png)
+![4](https://github.com/xr2117/Spring-Cloud-Project/blob/master/images/4.png)
 
 ##### 7.4.1 创建 Yml push到Github
 
@@ -964,7 +964,7 @@ env:
 ```
 > - 2. push 到github 远程仓库
 
-![5](D:\Spring-cloud-工程\Spring-Cloud-Project\images\5.png)
+![5](https://github.com/xr2117/Spring-Cloud-Project/blob/master/images/5.png)
 
 #### 7.5 搭建config clinet端
 
@@ -1217,7 +1217,7 @@ public class ConfigClientRest {
 
 #### 8.4.1 Github Webhooks功能!
 
-![8](D:\Spring-cloud-工程\Spring-Cloud-Project\images\8.png)
+![8](https://github.com/xr2117/Spring-Cloud-Project/blob/master/images/7.png)
 
 ### 九、Cloud GateWay
 > **在Spring boot2.0版本发布之后，spring cloud又集成和开发了很多新的模块和功能；spring boot2.0和spring boot1.5的差别可以说是很大了。今天介绍一些spring cloud gateway，spring cloud自己的网关，在1.x版本中，大家使用的较多的是Zuul网关，但Zuul只是Spring cloud整合Netflix的，并不是它自己的。今天大家一起来感受一下Spring cloud gateway的强大之处吧！**
