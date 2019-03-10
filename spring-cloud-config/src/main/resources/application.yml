@@ -14,12 +14,24 @@ eureka:
 spring:
   application:
     name: spring-cloud-config-server
-    # 远程仓库地址
+    # Github远程仓库地址
   cloud:
     config:
       server:
         git:
           uri: git@github.com:xr2117/Spring-Cloud-Yml.git
+  # bus 配置rabbitmq
+  rabbitmq:
+    host: 106.13.66.245
+    port: 5672
+    username: guest
+    password: guest
+#  暴露接口 http://localhost:3344/actuator/bus-refresh 刷新配置，cloud默认关闭改接口
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 #tomcat端口
 server:
   port: 3344

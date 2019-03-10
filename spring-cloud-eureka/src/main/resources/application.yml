@@ -23,6 +23,6 @@ eureka:
 spring:
   application:
     name: eureka
-#tomcat端口
+#tomcat端口（8761也是默认端口）
 server:
   port: 8761

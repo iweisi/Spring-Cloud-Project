@@ -6,7 +6,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.config.server.EnableConfigServer;
 
 /**
- * 该服务是个cloud config server
+ * 声明该服务 是cloud config server
  */
 @SpringBootApplication
 @EnableConfigServer

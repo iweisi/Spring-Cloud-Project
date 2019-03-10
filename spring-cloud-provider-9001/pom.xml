@@ -58,6 +58,7 @@
                 <scope>test</scope>
                 <version>${spring-boot.version}</version>
             </dependency>
+            <!-- hystrix 断路器 -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
