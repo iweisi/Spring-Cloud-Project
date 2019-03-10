@@ -17,6 +17,11 @@ spring:
 #tomcat端口
 server:
   port: 9001
-
+# 使用服务监控释放的访问路径,后续的配置中心bus刷新也需要释放
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 
 

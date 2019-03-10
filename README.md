@@ -690,8 +690,9 @@ public class ConsumerController {
 }
 ```
 ### 五、HystrixDashboard 服务监控
-
-> Hystrix Dashboard是Hystrix的仪表盘组件，主要用来实时监控Hystrix的各项指标信息，通过界面反馈的信息可以快速发现系统中存在的问题。
+> **Hystrix Dashboard是Hystrix的仪表盘组件，主要用来实时监控Hystrix的各项指标信息，通过界面反馈的信息可以快速发现系统中存在的问题。**
+>
+> **使用Hystrixdashboard 必须在提供者提供的接口上使用@HystrixCommand注解,但是可以不提供熔断函数，但是不提供也将出现异常无回调函数，导致系统出现雪崩。**
 
 #### 5.1 Pom 配置
 ```xml
@@ -710,12 +711,13 @@ public class ConsumerController {
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
         </dependency>
-        <!-- 同样使用 Feign -->
+        <!-- actuator 组件 健康检查、审计、统计和监控 -->
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 ```
+
 #### 5.2 启动类 配置
 ```java
 /**
@@ -732,19 +734,11 @@ public class HystrixdashboardApplication {
 }
 
 ```
-#### 5.3 需要监控的服务 pom配置
-> 所有需要被监控的微服务都要引入该依赖
 
+#### 5.3 需要监控的服务 （Client端）
 
-```xml
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-```
-#### 5.3 需要监控的服务 pom配置
-> 所有需要被监控的微服务都要引入该依赖
-
+##### 5.3.1 Pom 配置
+> 所有需要被监控的微服务都要引入该依赖(必须)
 
 ```xml
         <!-- actuator 组件 健康检查、审计、统计和监控 -->
@@ -754,10 +748,103 @@ public class HystrixdashboardApplication {
         </dependency>
 ```
 
-#### 5.4 监控步骤
+##### 5.3.2 启动类配置 
+```java
 
-2.X的版本 好像有bug 笔者后续会补 在找原因
+/**
+ * 开启Feign，若是多模块需要扫描指定存放Feign接口的的路径
+ * @SpringCloudApplication是个组合注解包括的是下面三个,所有我用它代替
+ * 1.@SpringBootApplication
+ * 2.@EnableDiscoveryClient
+ * 3.@EnableCircuitBreaker
+ */
+@EnableFeignClients("com.cloud.api.feign")
+@SpringCloudApplication
+public class Provider9001Application {
 
+    public static void main(String[] args) {
+        SpringApplication.run(Provider9001Application.class, args);
+    }
+
+}
+```
+
+
+##### 5.3.3 Yml 配置
+```yaml
+eureka:
+  client:
+    service-url:
+      # 注册中心地址 向Eureka注册
+      # Eureka如果是集群的话，注册到Eureka集群使用“,”分割
+      # defaultZone: http://localhost:8761/eureka/，http://localhost:8762/eureka/
+      defaultZone: http://localhost:8761/eureka/
+    # 注册到Eureka Status自定义名称
+  instance:
+    instance-id: spring-cloud-client-9001-hystrix
+    # 注册到Eureka Status自定义IP
+    prefer-ip-address: true
+# client 应用名称
+spring:
+  application:
+    name: spring-cloud-provider
+#tomcat端口
+server:
+  port: 9001
+# 使用服务监控释放的访问路径,后续的配置中心bus刷新也需要释放
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+```
+
+##### 5.3.4 提供方 接口
+
+```java
+/**
+ * Feign接口对应的Controller
+ */
+@RestController
+public class ProviderController {
+
+    @Autowired
+    ProviderService providerService;
+
+    /**
+     * 弱抛出异常，将会引发Hystrix机制，fallback方法
+     */
+    @HystrixCommand(fallbackMethod = "fallbackMethod")
+    @GetMapping("/cloud/{num}")
+    public User cloud(@PathVariable Integer num) {
+        System.out.println("9001 控制器");
+        if (num > 10) {
+            throw new RuntimeException("num 不能大于 10");
+        }
+        return providerService.findUserAll();
+    }
+
+    /**
+     * cloud方法的熔断函数
+     */
+    private User fallbackMethod(@PathVariable Integer num) {
+        return new User("回调函数", "123");
+    }
+}
+```
+##### 5.3.5 监控步骤
+###### 5.3.5.1 启动HystrixDashdoard服务
+
+> 运行Hystrix微服务 访问  `http://localhost:8000/hystrix` 会出现以下页面，也就代表服务运行成功（图片示例）
+
+![a865e1e9a5735b7ab169a26bb0061e14.png](en-resource://database/663:0)
+
+###### 5.3.5.2 使用监控
+ - 在路径填写要被监控的服务即可
+    `http://localhost:9001/actuator/hystrix.stream `
+ - Delay：2000
+ - Title：标题
+    ![bb7494ab7d03c4fc968af42512e4cfa4.png](en-resource://database/665:0)
 
 
 ### 六、Zuul 网关

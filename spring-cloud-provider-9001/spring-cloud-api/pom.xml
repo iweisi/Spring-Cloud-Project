@@ -12,6 +12,11 @@
     <artifactId>api</artifactId>
 
     <dependencies>
+        <!-- actuator 组件 健康检查、审计、统计和监控 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>

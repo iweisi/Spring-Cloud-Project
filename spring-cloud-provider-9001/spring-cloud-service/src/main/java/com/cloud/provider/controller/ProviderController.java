@@ -20,6 +20,7 @@ public class ProviderController {
     /**
      * 弱抛出异常，将会引发Hystrix机制，fallback方法
      */
+    @HystrixCommand(fallbackMethod = "fallbackMethod")
     @GetMapping("/cloud/{num}")
     public User cloud(@PathVariable Integer num) {
         System.out.println("9001 控制器");
@@ -27,5 +28,12 @@ public class ProviderController {
             throw new RuntimeException("num 不能大于 10");
         }
         return providerService.findUserAll();
+    }
+
+    /**
+     * cloud方法的熔断函数
+     */
+    private User fallbackMethod(@PathVariable Integer num) {
+        return new User("回调函数", "123");
     }
 }
