@@ -4,11 +4,13 @@
 
 ### 搭建环境：
 
-| 工具    | 版本            |
-| ----- | ------------- |
-| JDK   | 1.8           |
-| Maven | 3.X           |
-| IDE   | IntelliJ IDEA |
+| 工具           | 版本                |
+| ------------ | ----------------- |
+| JDK          | 1.8               |
+| Maven        | 3.X               |
+| IDE          | IntelliJ IDEA     |
+| Spring Boot  | 2.1.3.RELEASE     |
+| Spring Cloud | Greenwich.RELEASE |
 
 
 
@@ -844,7 +846,7 @@ public class ProviderController {
     `http://localhost:9001/actuator/hystrix.stream `
  - Delay：2000
  - Title：标题
-  ![9](https://github.com/xr2117/Spring-Cloud-Project/blob/master/images/9.png)
+     ![9](https://github.com/xr2117/Spring-Cloud-Project/blob/master/images/9.png)
 
 
 ### 六、Zuul 网关
