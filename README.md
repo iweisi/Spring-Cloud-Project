@@ -324,7 +324,7 @@ public class CloudConfig {
 ```
 #### 3.2 Eureka 服务
 - 服务端若是集群，默认是轮询调用
-  ![0](D:\Spring-cloud-工程\Spring-Cloud-Project\images\0.png)
+  ![0](https://github.com/xr2117/Spring-Cloud-Project/blob/master/images/0.png)
 
 #### 3.3 调用 配置 
 ```java
